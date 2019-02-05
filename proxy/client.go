@@ -73,6 +73,8 @@ func DefaultClientCreator(addr, transport, dbDir string) ClientCreator {
 		return NewLocalClientCreator(kvstore.NewKVStoreApplication())
 	case "persistent_kvstore":
 		return NewLocalClientCreator(kvstore.NewPersistentKVStoreApplication(dbDir))
+	case "slow_kvstore":
+		return NewLocalClientCreator(kvstore.NewSlowKVStoreApplication())
 	case "noop":
 		return NewLocalClientCreator(types.NewBaseApplication())
 	default:
